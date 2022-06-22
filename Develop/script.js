@@ -4,6 +4,14 @@ var yesSpecial;
 var yesLower;
 var yesUpper;
 
+var passPrompts = function() {
+  // prompts for password. might need to be moved later
+  var yesLower = window.confirm("Should the password have lower case letters? Press cancel for No.") //true = include lowercase
+  var yesUpper = window.confirm("Should the password have upper case letters? Press cancel for No.") //true = include uppercase
+  var yesSpecial = window.confirm("Should the password have special characters? Press cancel for No.") //true = include specials
+  var yesNumber = window.confirm("Should the password have numbers? Press cancel for No.") //true = include numbers
+
+}
 
 function generatePassword () {
 
@@ -72,15 +80,14 @@ var tempYesNumber = "";
 
   return password;
 
+  console.log(yesLower);
+  console.log(yesNumber);
+  console.log(yesUpper);
+  console.log(yesSpecial);
+
 }
 
-var passPrompts = function() {
-  // prompts for password. might need to be moved later
-  var yesLower = window.confirm("Should the password have lower case letters? Press cancel for No.") //true = include lowercase
-  var yesUpper = window.confirm("Should the password have upper case letters? Press cancel for No.") //true = include uppercase
-  var yesSpecial = window.confirm("Should the password have special characters? Press cancel for No.") //true = include specials
-  var yesNumber = window.confirm("Should the password have numbers? Press cancel for No.") //true = include numbers
-}
+String(password);
 
 
 // Get references to the #generate element
@@ -89,7 +96,7 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  // console.log(password);
+  console.log(password);
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
