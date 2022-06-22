@@ -14,7 +14,7 @@ function generatePassword () {
     var upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     var totalArray = [];
 
-    // prompts for password. might need to be moved later
+    // prompt for password length. might need to be moved later
     var passLength = (prompt("How long should the password be? From 8 characters to 128 characters"));
     console.log(passLength);
 
@@ -89,7 +89,7 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  console.log(password);
+  // console.log(password);
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
