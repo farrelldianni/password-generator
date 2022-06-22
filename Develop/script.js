@@ -16,15 +16,7 @@ function generatePassword () {
 
     // prompts for password. might need to be moved later
     var passLength = (prompt("How long should the password be? From 8 characters to 128 characters"));
-    // var typeLower = confirm("Should the password have lower case letters? Press cancel for No.") //true = include lowercase
-    // var typeUpper = confirm("Should the password have upper case letters? Press cancel for No.") //true = include uppercase
-    // var typeSpecial = confirm("Should the password have special characters? Press cancel for No.") //true = include specials
-
-    // console.log(passLength);
-    // console.log(yesLower);
-    // console.log(yesUpper);
-    // console.log(yesSpecial);
-
+    console.log(passLength);
 
 //checking password length is between 8 and 128 and returning until correct value is given 
     if (passLength < 8 || passLength > 128) {
@@ -39,7 +31,6 @@ function generatePassword () {
             }
 
 //storing answers for pass generation
-
 var tempYesLower = "";
 var tempYesUpper = "";
 var tempYesSpecial = "";
@@ -47,30 +38,39 @@ var tempYesNumber = "";
 
       
 // use math.random to grab variable from array 
-// need to add variable to store that info 
 
+// concatenates each array
   if (yesLower) {
     totalArray = totalArray.concat(lower);
-    tempYesLower = lower[Math.floor(math.random() * lower.length)]
+    tempYesLower = lower[Math.floor(math.random() * lower.length)];
+    console.log(yesLower);
   }
 
   if (yesUpper) {
     totalArray = totalArray.concat(upper);
-    tempYesUpper = upper[Math.floor(math.random() * upper.length)]
+    tempYesUpper = upper[Math.floor(math.random() * upper.length)];
   }
 
   if (yesNumber) {
     totalArray = totalArray.concat(number);
-    tempYesNumber = number[math.floor(math.random() * number.length)]
+    tempYesNumber = number[math.floor(math.random() * number.length)];
   }
 
   if (yesSpecial) {
     totalArray = totalArray.concat(special);
-    tempYesSpecial = special[math.floor(math.random() * special.length)]
+    tempYesSpecial = special[math.floor(math.random() * special.length)];
   }
 
-  var password = tempYesLower + tempYesUpper + tempYesNumber + tempYesSpecial
+  //combining stored pass values to generate whole password 
+  var password = tempYesLower + tempYesUpper + tempYesNumber + tempYesSpecial;
+  var character = password.length;
 
+  //checking pass length and randomizing
+  for (var i = character; i < password.length; i++) {
+    password += totalArray[math.floor(math.random() * totalArray.length)];
+  }
+
+  return password;
 
 }
 
@@ -82,14 +82,6 @@ var passPrompts = function() {
   var yesNumber = window.confirm("Should the password have numbers? Press cancel for No.") //true = include numbers
 }
 
-// 
-
-if (typeLower = false) {
-
-}
-
-   
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -97,6 +89,7 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
+  console.log(password);
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
