@@ -2,19 +2,22 @@
 var passPrompts = function() {
   // prompts for password. might need to be moved later
   yesLower = window.confirm("Should the password have lower case letters? Press cancel for No."); //true = include lowercase
-  console.log(yesLower);
+  // console.log(yesLower);
   yesUpper = window.confirm("Should the password have upper case letters? Press cancel for No."); //true = include uppercase
-  console.log(yesUpper);
+  // console.log(yesUpper);
   yesSpecial = window.confirm("Should the password have special characters? Press cancel for No."); //true = include specials
-  console.log(yesSpecial);
+  // console.log(yesSpecial);
   yesNumber = window.confirm("Should the password have numbers? Press cancel for No."); //true = include numbers
-  console.log(yesNumber);
+  // console.log(yesNumber);
 }
+
+
 
 var yesNumber;
 var yesSpecial;
 var yesLower;
 var yesUpper;
+
 
 function generatePassword () {
 
@@ -41,58 +44,58 @@ function generatePassword () {
               passPrompts();
             }
 
+// sending user back to passPrompts to have the proper conditions with at least one character type
+    while (!yesLower && !yesSpecial && !yesNumber && !yesUpper) {
+      alert("please accept at least one character type")
+      passPrompts();
+    }
+
+
+
 //storing answers for pass generation
-var tempYesLower = "";
-var tempYesUpper = "";
-var tempYesSpecial = "";
-var tempYesNumber = "";
+// var tempYesLower = "";
+// var tempYesUpper = "";
+// var tempYesSpecial = "";
+// var tempYesNumber = "";
 
       
 // use math.random to grab variable from array 
 
 // concatenates each array
-  if (yesLower = true) {
+  if (yesLower) {
     totalArray = totalArray.concat(lower);
-    tempYesLower = lower[Math.floor(Math.random() * lower.length)];
     console.log(yesLower);
   }
 
-  if (yesUpper = true) {
+  if (yesUpper) {
     totalArray = totalArray.concat(upper);
-    tempYesUpper = upper[Math.floor(Math.random() * upper.length)];
+    console.log(yesUpper);
   }
 
-  if (yesNumber = true) {
+  if (yesNumber) {
     totalArray = totalArray.concat(number);
-    tempYesNumber = number[Math.floor(Math.random() * number.length)];
+    console.log(yesNumber);
   }
 
-  if (yesSpecial = true) {
+  if (yesSpecial) {
     totalArray = totalArray.concat(special);
-    tempYesSpecial = special[Math.floor(Math.random() * special.length)];
+    console.log(yesSpecial);
   }
+
 
   //combining stored pass values to generate whole password 
-  var password = tempYesLower + tempYesUpper + tempYesNumber + tempYesSpecial;
-  var character = password.length;
+  var password = "";  
+  // var character = password.length;
 
   //checking pass length and randomizing
-  for (var i = character; i < password.length; i++) {
-    password += totalArray[math.floor(ath.random() * totalArray.length)];
+  for (var i = 0; i < passLength; i++) {
+    password += totalArray[Math.floor(Math.random() * totalArray.length)];
   }
 
   return password;
 
-  // console.log(password);
-  // console.log(lower);
-  // console.log(number);
-  // console.log(upper);
-  // console.log(special);
 
 }
-
-
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
